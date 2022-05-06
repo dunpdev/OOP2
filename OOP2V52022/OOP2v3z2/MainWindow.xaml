@@ -1,0 +1,62 @@
+﻿<Window x:Class="OOP2v3z2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OOP2v3z2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" 
+        KeyDown="Window_KeyDown" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical">
+            <StackPanel Margin="20 10" Orientation="Horizontal">
+                <TextBlock Text="Poštanski broj"/>
+                <TextBox Margin="50 0" x:Name="pb" d:Text="36300" Width="50" />
+            </StackPanel>
+            <StackPanel Margin="20 10" Orientation="Horizontal">
+                <TextBlock Text="Poštanski broj"/>
+                <TextBox Margin="50 0" x:Name="no" d:Text="Novi Pazar" Width="200" />
+            </StackPanel>
+            <StackPanel Margin="20 10" Orientation="Horizontal">
+                <TextBlock Text="Poštanski broj"/>
+                <TextBox Margin="50 0" x:Name="bs" d:Text="100000" Width="50" />
+            </StackPanel>
+            <Button Content="Dodaj opštinu" Width="100" Background="Aqua" Foreground="BlueViolet" 
+                    Click="Button_Click_1"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <TextBlock Margin="20 10" Text="Uneti gradovi"/>
+            <ListView x:Name="listaOpstina">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Pos. broj" Width="120" DisplayMemberBinding="{Binding broj}"/>
+                        <GridViewColumn Header="Opstina" Width="120" DisplayMemberBinding="{Binding naziv}"/>
+                        <GridViewColumn Header="Broj stan." Width="120" DisplayMemberBinding="{Binding brstan}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button Content="Obrisati opštinu" Click="Button_Click_2" Background="Aqua" Foreground="Red"/>
+        </StackPanel>
+
+        <Button x:Name="cmdIzlaz" Grid.Column="1" Content="X" Background="AntiqueWhite" Foreground="Red" Height="20" Width="20" 
+                VerticalAlignment="Top" HorizontalAlignment="Right" Click="Button_Click"/>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Bottom">
+            <TextBlock Text="Prosečan broj stanovnika"/>
+            <TextBox x:Name="pbs" Width="120"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Visibility="Hidden" x:Name="cmdDa" Click="cmdDa_Click" Content="Da" Background="Aquamarine" Foreground="Blue" Width="50"/>
+                <Button Visibility="Hidden" Name="cmdNe" Click="cmdNe_Click" Content="Ne" Background="Aquamarine" Foreground="Red" Width="50" HorizontalAlignment="Right"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
