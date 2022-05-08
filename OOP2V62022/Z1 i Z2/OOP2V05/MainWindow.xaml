@@ -1,0 +1,20 @@
+﻿<Window x:Class="OOP2V05.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OOP2V05"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="400">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBox x:Name="textBox1" Width="200" KeyDown="textBox1_KeyDown"/>
+            <Button Content="Dodaj" Click="Button_Click"/>
+        </StackPanel>
+        <ListBox x:Name="listBox1" Height="350"/>
+            <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal">
+            <Button Content="Ucitaj" Margin="20" Click="Button_Click_1"/>
+            <Button Content="Snimi" Margin="20" Click="Button_Click_2"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

@@ -1,0 +1,57 @@
+﻿<Window x:Class="OOP2V05Z2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OOP2V05Z2"
+        mc:Ignorable="d"
+        Title="Rad sa dve datoteke" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <TextBlock Text="Tekst za combo box" Foreground="Blue" Padding="5"/>
+            <TextBox x:Name="txtZaComboBox" Margin="5" KeyDown="txtZaComboBox_KeyDown"/>
+            <ComboBox x:Name="cbStavke" Margin="5" SelectionChanged="cbStavke_SelectionChanged" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Padding="5 0" 
+                     Margin="5" Background="AliceBlue"
+                     Click="Button_Click">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse Width="5" Height="5" Fill="Aqua" Margin="5 0"/>
+                            <TextBlock Text="SNIMI"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Content="UCITAJ" Padding="5 0" 
+                     Margin="5" Background="AliceBlue"
+                     Click="Ucitaj_Click"/>
+            </StackPanel>
+            <TextBlock Text="Broj redova u combo box-u"/>
+            <TextBox x:Name="txtBrojRedovaComboBox"/>
+            <TextBlock Text="Izabrana stavka u combo box-u"/>
+            <TextBox x:Name="txtIzabranaStavkaComboBox"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Tekst za list box" Foreground="Blue" Padding="5"/>
+            <TextBox x:Name="txtZaListBox" Margin="5" KeyDown="txtZaListBox_KeyDown"/>
+            <ListBox x:Name="lbStavke" Margin="5" Height="200"
+                     SelectionChanged="lbStavke_SelectionChanged"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+             <Button Content="SNIMI" Padding="5 0" 
+                     Margin="5" Background="AliceBlue"
+                     Click="SnimanjeListBox_Click"/>
+             <Button Content="UCITAJ" Padding="5 0" 
+                     Margin="5" Background="AliceBlue"
+                     Click="UcitajListBox_Click"/>
+            </StackPanel>
+            <TextBlock Text="Broj redova u list box-u"/>
+            <TextBox x:Name="txtBrojRedovaListBox"/>
+            <TextBlock Text="Izabrana stavka u list box-u"/>
+            <TextBox x:Name="txtIzabranaStavkaListBox"/>
+        </StackPanel>
+    </Grid>
+</Window>
