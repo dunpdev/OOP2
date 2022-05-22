@@ -1,0 +1,29 @@
+﻿<Window x:Class="OOP2V8Z2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        xmlns:local="clr-namespace:OOP2V8Z2"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="450"
+        Width="400" 
+        >
+    <Window.Resources>
+        
+    </Window.Resources>
+    <StackPanel>
+        <TextBlock Text="PODACI O STUDENTU"/>
+        <TextBlock Text="Ime"/>
+        <TextBox Text="{Binding Student.Ime}" />
+        <TextBlock Text="Prezime"/>
+        <TextBox Text="{Binding Student.Prezime}" />
+        <TextBlock Text="Telefon"/>
+        <TextBox Text="{Binding Student.Telefon}" />
+        <TextBlock Text="Godina studija"/>
+        <TextBox Text="{Binding Student.GodinaStudija}" />
+        <Button Click="Button_Click" 
+                Content="Predji u sledecu godinu" />
+    </StackPanel>
+</Window>
