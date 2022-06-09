@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cenovnik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="CeneDan" Type="float" Nullable="false" />
+          <Property Name="CeneSat" Type="float" Nullable="false" />
+          <Property Name="BrMesta" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="parking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="RegBroj" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="Vreme" Type="datetime" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdVlasnika" Type="int" />
+        </EntityType>
+        <EntityType Name="Vlasnik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ime" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Prezime" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__parking__IdVlasn__276EDEB3">
+          <End Role="Vlasnik" Type="Self.Vlasnik" Multiplicity="0..1" />
+          <End Role="parking" Type="Self.parking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vlasnik">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="parking">
+              <PropertyRef Name="IdVlasnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="Cenovnik" EntityType="Self.Cenovnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="parking" EntityType="Self.parking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vlasnik" EntityType="Self.Vlasnik" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__parking__IdVlasn__276EDEB3" Association="Self.FK__parking__IdVlasn__276EDEB3">
+            <End Role="Vlasnik" EntitySet="Vlasnik" />
+            <End Role="parking" EntitySet="parking" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cenovnik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="CeneDan" Type="Double" Nullable="false" />
+          <Property Name="CeneSat" Type="Double" Nullable="false" />
+          <Property Name="BrMesta" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="parking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="RegBroj" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Vreme" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdVlasnika" Type="Int32" />
+          <NavigationProperty Name="Vlasnik" Relationship="Self.FK__parking__IdVlasn__276EDEB3" FromRole="parking" ToRole="Vlasnik" />
+        </EntityType>
+        <EntityType Name="Vlasnik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ime" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prezime" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="parkings" Relationship="Self.FK__parking__IdVlasn__276EDEB3" FromRole="Vlasnik" ToRole="parking" />
+        </EntityType>
+        <Association Name="FK__parking__IdVlasn__276EDEB3">
+          <End Role="Vlasnik" Type="Self.Vlasnik" Multiplicity="0..1" />
+          <End Role="parking" Type="Self.parking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vlasnik">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="parking">
+              <PropertyRef Name="IdVlasnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ParkingDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cenovniks" EntityType="Self.Cenovnik" />
+          <EntitySet Name="parkings" EntityType="Self.parking" />
+          <EntitySet Name="Vlasniks" EntityType="Self.Vlasnik" />
+          <AssociationSet Name="FK__parking__IdVlasn__276EDEB3" Association="Self.FK__parking__IdVlasn__276EDEB3">
+            <End Role="Vlasnik" EntitySet="Vlasniks" />
+            <End Role="parking" EntitySet="parkings" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="ParkingDbEntities">
+          <EntitySetMapping Name="Cenovniks">
+            <EntityTypeMapping TypeName="Database1Model.Cenovnik">
+              <MappingFragment StoreEntitySet="Cenovnik">
+                <ScalarProperty Name="CeneDan" ColumnName="CeneDan" />
+                <ScalarProperty Name="CeneSat" ColumnName="CeneSat" />
+                <ScalarProperty Name="BrMesta" ColumnName="BrMesta" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="parkings">
+            <EntityTypeMapping TypeName="Database1Model.parking">
+              <MappingFragment StoreEntitySet="parking">
+                <ScalarProperty Name="RegBroj" ColumnName="RegBroj" />
+                <ScalarProperty Name="Vreme" ColumnName="Vreme" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdVlasnika" ColumnName="IdVlasnika" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vlasniks">
+            <EntityTypeMapping TypeName="Database1Model.Vlasnik">
+              <MappingFragment StoreEntitySet="Vlasnik">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,23 @@
+﻿<Window x:Class="OOP2V10.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OOP2V10"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu>
+            <MenuItem Header="Cenovnik" Click="MenuItem_Click"/>
+            <MenuItem Header="Pregled stanja" Click="MenuItem_Click_2"/>
+            <MenuItem Header="Vlasnici" Click="MenuItem_Click_1"/>
+        </Menu>
+        <Grid Grid.Row="1">
+            <Frame x:Name="main" NavigationUIVisibility="Hidden"/>
+        </Grid>
+    </Grid>
+</Window>
